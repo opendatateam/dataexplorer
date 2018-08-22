@@ -1,0 +1,1 @@
+export const serverApi = 'https://csvapi.maboiteprivee.fr:8080'
