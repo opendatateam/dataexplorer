@@ -45,7 +45,7 @@ const Header = ({
                     data={sortedData}
                     target="_blank"
                 >
-                    Exporter ({sortedData.length})
+                    Exporter ({String(sortedData.length) + ", " + String(Object.keys(sortedData[0]).length - 4)})
                 </CSVLink>
             </Menu.Item>
             <Dropdown
