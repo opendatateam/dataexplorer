@@ -2,6 +2,7 @@
   "name": "dataexplorer",
   "version": "0.1.0",
   "private": true,
+  "homepage": ".",
   "dependencies": {
     "antd": "^3.4.0",
     "history": "^4.7.2",
