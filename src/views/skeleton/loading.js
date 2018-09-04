@@ -11,7 +11,7 @@ const Loading = ({
 }) => {
 
 
-    const csv = location.search.split('?csv=')[1];
+    const csv = location.search.split('?url=')[1];
     fetch(serverApi + '/apify?url=' + csv)
     .then(response => response.json())
     .then(json => {
