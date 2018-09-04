@@ -9,10 +9,12 @@ const Loading = ({
     location,
     updateData,
 }) => {
-
-
-    const csv = location.search.split('?url=')[1];
-    fetch(serverApi + '/apify?url=' + csv)
+    const params = new URLSearchParams(location.search);
+    const url = params.get('url');
+    const serverUrl = new URL(serverApi);
+    serverUrl.pathname = '/apify'
+    serverUrl.searchParams.set('url', url)
+    fetch(serverUrl)
     .then(response => response.json())
     .then(json => {
         if(json.ok) {
