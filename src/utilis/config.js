@@ -13,4 +13,4 @@ function _meta(name) {
     return _attr(`meta[name=${name}]`, 'content');
 }
 
-export const serverApi = _meta('csvapi-url');
+export const csvapiUrl =  process.env.REACT_APP_CSVAPI_URL || _meta('csvapi-url');

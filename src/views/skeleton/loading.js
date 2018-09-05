@@ -3,7 +3,7 @@ import Lottie from "react-lottie";
 import animationLoading from "./loading.json";
 import { updateData } from "./../../redux/actions/data";
 import { connect } from 'react-redux'
-import { serverApi } from './../../utilis/config'
+import { csvapiUrl } from './../../utilis/config'
 
 const Loading = ({
     location,
@@ -11,7 +11,7 @@ const Loading = ({
 }) => {
     const params = new URLSearchParams(location.search);
     const url = params.get('url');
-    const serverUrl = new URL(serverApi);
+    const serverUrl = new URL(csvapiUrl);
     serverUrl.pathname = '/apify'
     serverUrl.searchParams.set('url', url)
     fetch(serverUrl)
