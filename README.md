@@ -37,6 +37,12 @@ npm install
 npm run start
 ```
 
+You can build a final version using:
+
+```shell
+npm run build
+```
+
 ### Environment variables
 
 You can provide some build time configuration using a `.env` file (see the `.env.sample`).
