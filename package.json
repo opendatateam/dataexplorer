@@ -1,7 +1,6 @@
 {
   "name": "dataexplorer",
   "version": "0.1.0",
-  "private": true,
   "homepage": ".",
   "files": [
     "build/*"
