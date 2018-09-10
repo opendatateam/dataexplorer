@@ -18,9 +18,10 @@ const Loading = ({
     .then(response => response.json())
     .then(json => {
         if(json.ok) {
-            // const id = json.endpoint.split('/');
-            // console.log(id[id.length - 1])
-            updateData(json.endpoint + '?_shape=objects')
+            const url = new URL(json.endpoint)
+            url.searchParams.set('_shape', 'objects')
+            url.searchParams.set('_rowid', 'hide')
+            updateData(url)
         } else {
             Error()
         }
