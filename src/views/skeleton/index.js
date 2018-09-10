@@ -1,5 +1,5 @@
 import React from 'react'
-import { connect } from "react-redux"
+import { connect } from 'react-redux'
 import Loading from './loading'
 import Fail from './fail'
 import Header from './header'
@@ -41,6 +41,6 @@ const Skeleton = ({ view, slider }) => {
 const mapStateToProps = state => ({
     view: state.data.view,
     slider: state.views.slider
-});
+})
 
 export default withRouter(connect(mapStateToProps)(Skeleton))

@@ -9,9 +9,7 @@ const classes = {
     }
 }
 
-const PivotComponent = (columns, pivot, addPivot, removePivot) => {
-
-    return (
+const PivotComponent = (columns, pivot, addPivot, removePivot) => (
     <div style={{display: 'flex', flexDirection: 'column', flex: 1}}>
         {
             columns.map((col, index) => {
@@ -35,11 +33,9 @@ const PivotComponent = (columns, pivot, addPivot, removePivot) => {
             })
         }
     </div>
-)}
+)
 
-const ColumnViewComponent = (columns, renderedColumns, addRenderColumns, removeRenderColumns) => {
-
-    return (
+const ColumnViewComponent = (columns, renderedColumns, addRenderColumns, removeRenderColumns) => (
     <div style={{display: 'flex', flexDirection: 'column', flex: 1}}>
         {
             columns.map((col, index) => {
@@ -63,69 +59,68 @@ const ColumnViewComponent = (columns, renderedColumns, addRenderColumns, removeR
             })
         }
     </div>
-)}
+)
 
 class AccordionExampleMenu extends Component {
-  state = { activeIndex: 0 }
+    state = { activeIndex: 0 }
 
-  handleClick = (e, titleProps) => {
-    const { index } = titleProps
-    const { activeIndex } = this.state
-    const newIndex = activeIndex === index ? -1 : index
+    handleClick = (e, titleProps) => {
+        const { index } = titleProps
+        const { activeIndex } = this.state
+        const newIndex = activeIndex === index ? -1 : index
 
-    this.setState({ activeIndex: newIndex })
-  }
+        this.setState({ activeIndex: newIndex })
+    }
 
-  render() {
-    const { activeIndex } = this.state
-    const {
-        slider,
-        columns,
-        renderedColumns,
-        pivot,
-        addPivot,
-        removePivot,
-        addRenderColumns,
-        removeRenderColumns,
-    } = this.props
+    render() {
+        const {
+            slider,
+            columns,
+            renderedColumns,
+            pivot,
+            addPivot,
+            removePivot,
+            addRenderColumns,
+            removeRenderColumns,
+        } = this.props
 
-    return (
-        <Sidebar
-            animation='overlay'
-            width='wide'
-            direction='right'
-            icon='labeled'
-            visible={slider}
-        >
-        <Accordion as={Menu} vertical style={{borderRadius: 0, width: '100%'}}>
-            <Menu.Item>
-                <Accordion.Title
-                    active
-                    content='Variables visibles'
-                    index={1}
-                    onClick={this.handleClick}
-                />
-                <Accordion.Content
-                    active
-                    content={ColumnViewComponent(columns, renderedColumns, addRenderColumns, removeRenderColumns)}
-                />
-            </Menu.Item>
-            <Menu.Item>
-                <Accordion.Title
-                    active
-                    content='Agréger par'
-                    index={0}
-                    onClick={this.handleClick}
-                />
-                <Accordion.Content
-                    active
-                    content={PivotComponent(columns, pivot, addPivot, removePivot)}
-                />
-            </Menu.Item>
-        </Accordion>
-      </Sidebar>
-    )
-  }
+        return (
+            <Sidebar
+                animation='overlay'
+                width='wide'
+                direction='right'
+                icon='labeled'
+                visible={slider}
+            >
+            <Accordion as={Menu} vertical style={{borderRadius: 0, width: '100%'}}>
+                <Menu.Item>
+                    <Accordion.Title
+                        active
+                        content='Variables visibles'
+                        index={1}
+                        onClick={this.handleClick}
+                    />
+                    <Accordion.Content
+                        active
+                        content={ColumnViewComponent(columns, renderedColumns, addRenderColumns, removeRenderColumns)}
+                    />
+                </Menu.Item>
+                <Menu.Item>
+                    <Accordion.Title
+                        active
+                        content='Agréger par'
+                        index={0}
+                        onClick={this.handleClick}
+                    />
+                    <Accordion.Content
+                        active
+                        content={PivotComponent(columns, pivot, addPivot, removePivot)}
+                    />
+                </Menu.Item>
+            </Accordion>
+        </Sidebar>
+        )
+    }
 }
 
 const mapStateToProps = state => ({
@@ -133,13 +128,13 @@ const mapStateToProps = state => ({
     renderedColumns: state.data.renderedColumns,
     pivot: state.data.pivot,
     slider: state.views.slider
-});
+})
 
 const mapDispatchToProps = {
     addPivot: addPivot,
     removePivot: removePivot,
     addRenderColumns: addRenderColumns,
     removeRenderColumns: removeRenderColumns
-};
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(AccordionExampleMenu)

@@ -2,15 +2,15 @@
  * Simple helper to fetch attribute on given css selector
  */
 function _attr(selector, name) {
-    const el = document.querySelector(selector);
-    return el ? el.getAttribute(name) : undefined;
+    const el = document.querySelector(selector)
+    return el ? el.getAttribute(name) : undefined
 }
 
 /**
  * Simple helper to <meta/> tag content given its name
  */
 function _meta(name) {
-    return _attr(`meta[name=${name}]`, 'content');
+    return _attr(`meta[name=${name}]`, 'content')
 }
 
-export const csvapiUrl =  process.env.REACT_APP_CSVAPI_URL || _meta('csvapi-url');
+export const csvapiUrl =  process.env.REACT_APP_CSVAPI_URL || _meta('csvapi-url')

@@ -1,7 +1,7 @@
 import React from 'react'
-import Lottie from "react-lottie";
-import animationLoading from "./loading.json";
-import { updateData } from "./../../redux/actions/data";
+import Lottie from 'react-lottie'
+import animationLoading from './loading.json'
+import { updateData } from './../../redux/actions/data'
 import { connect } from 'react-redux'
 import { csvapiUrl } from './../../utilis/config'
 
@@ -9,9 +9,9 @@ const Loading = ({
     location,
     updateData,
 }) => {
-    const params = new URLSearchParams(location.search);
-    const url = params.get('url');
-    const serverUrl = new URL(csvapiUrl);
+    const params = new URLSearchParams(location.search)
+    const url = params.get('url')
+    const serverUrl = new URL(csvapiUrl)
     serverUrl.pathname = '/apify'
     serverUrl.searchParams.set('url', url)
     fetch(serverUrl)
@@ -27,7 +27,6 @@ const Loading = ({
         }
     })
     .catch(error => console.error(error))
-    // const id = location.pathname.split('/')[2];
 
     return (
         <div style={{ display: 'flex', flex: 1, alignItems: 'center', height: '100vh', width: '100vw'}}>
@@ -36,7 +35,7 @@ const Loading = ({
                 options={{
                     loop: true,
                     autoplay: true,
-                    renderer: "svg",
+                    renderer: 'svg',
                     animationData: animationLoading,
                     rendererSettings: {},
                 }}
@@ -44,15 +43,15 @@ const Loading = ({
                 width={'100%'}
             />
         </div>
-    );
-};
+    )
+}
 
 export const mapStateToProps = state => ({
     location: state.router.location,
-});
+})
 
 const mapDispatchToProps = {
-    updateData: updateData,
-};
+    updateData,
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Loading)

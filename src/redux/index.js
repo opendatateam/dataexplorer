@@ -1,18 +1,18 @@
-import { createStore, applyMiddleware, compose, combineReducers } from "redux";
-import { routerReducer, routerMiddleware } from "react-router-redux";
-import createHistory from "history/createBrowserHistory";
-import viewReducer from "./reducers/views";
-import reactTableReducer from "./reducers/reactTable";
-import graphReducer from "./reducers/graph";
-import dataReducer from "./reducers/data";
+import { createStore, applyMiddleware, compose, combineReducers } from 'redux'
+import { routerReducer, routerMiddleware } from 'react-router-redux'
+import createHistory from 'history/createBrowserHistory'
+import viewReducer from './reducers/views'
+import reactTableReducer from './reducers/reactTable'
+import graphReducer from './reducers/graph'
+import dataReducer from './reducers/data'
 import promiseMiddleware from 'redux-promise-middleware'
 
 const composeEnhancers =
-    process.env.NODE_ENV === "development"
+    process.env.NODE_ENV === 'development'
         ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
-        : compose;
+        : compose
 
-export const history = createHistory();
+export const history = createHistory()
 
 const reducers = combineReducers({
     router: routerReducer,
@@ -22,15 +22,15 @@ const reducers = combineReducers({
     data: dataReducer
     // ui: uiReducer,
     // data: dataReducer,
-});
+})
 
 const enhancer = composeEnhancers(
     applyMiddleware(
         routerMiddleware(history),
         promiseMiddleware(),
     )
-);
+)
 
-let Store = createStore(reducers, enhancer);
+const Store = createStore(reducers, enhancer)
 
-export default Store;
+export default Store

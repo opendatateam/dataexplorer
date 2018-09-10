@@ -1,10 +1,10 @@
 import {
     TOGGLE_SLIDER,
-} from "../actions/views";
+} from '../actions/views'
 
 const initialUiState = {
     slider: false,
-};
+}
 
 const uiReducer = (state = initialUiState, { type, payload }) => {
     switch (type) {
@@ -12,11 +12,11 @@ const uiReducer = (state = initialUiState, { type, payload }) => {
             return {
                 ...state,
                 slider: !state.slider
-            };
+            }
 
         default:
-            return state;
+            return state
     }
-};
+}
 
-export default uiReducer;
+export default uiReducer

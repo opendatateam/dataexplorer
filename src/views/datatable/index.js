@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactTable from 'react-table'
-import { connect } from "react-redux";
+import { connect } from 'react-redux'
 import {
     updateSorted,
     updatePage,
@@ -8,26 +8,21 @@ import {
     updateExpanded,
     updateResized,
     updateFiltered,
-} from "./../../redux/actions/reactTable";
-import {
-    updateSortedData,
-} from "./../../redux/actions/data";
+} from './../../redux/actions/reactTable'
+import { updateSortedData } from './../../redux/actions/data'
 import 'react-table/react-table.css'
-// import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc';
 
 function filterCaseInsensitive(filter, row) {
-    const id = filter.pivotId || filter.id ;
-    if (row[id] !== undefined && typeof(row[id]) == "string") 
-        {
-           return String(row[id].toLowerCase()).includes(filter.value.toLowerCase())
-        }
-    else if (row[id] !== undefined && typeof(row[id]) != "string") 
-        {
-           return String(row[id]).includes(String(filter.value))
-        }
+    const id = filter.pivotId || filter.id
+    if (row[id] !== undefined && typeof(row[id]) === 'string')  {
+        return String(row[id].toLowerCase()).includes(filter.value.toLowerCase())
+    }
+    else if (row[id] !== undefined && typeof(row[id]) !== 'string')  {
+        return String(row[id]).includes(String(filter.value))
+    }
     else {
-           return true
-        }
+        return true
+    }
 }
 
 const TableComponent = ({
@@ -50,8 +45,8 @@ const TableComponent = ({
         Header: column,
         accessor: column,
         style: { fontFamily: 'Helvetica'},
-        headerStyle: { fontSize: "16px",
-                       fontWeight: "bold",
+        headerStyle: { fontSize: '16px',
+                       fontWeight: 'bold',
                        fontFamily: 'Helvetica'}
     }))
 
@@ -69,7 +64,7 @@ const TableComponent = ({
             pivotBy={pivot}
             data={data}
             style={{
-                height: "calc(100vh - 74px)",
+                height: 'calc(100vh - 74px)',
             }}
 
             sorted={reactTable.sorted}
@@ -82,14 +77,14 @@ const TableComponent = ({
             onSortedChange={sorted => updateSorted(sorted)}
             onPageChange={page => updatePage(page)}
             onPageSizeChange={(pageSize, page) => {
-                updatePageSize(pageSize);
+                updatePageSize(pageSize)
                 updatePage(page)
             }}
             onExpandedChange={expanded => updateExpanded(expanded)}
             onResizedChange={resized => updateResized(resized)}
             onFilteredChange={filtered => updateFiltered(filtered)}
 
-            className="-striped -highlight"
+            className='-striped -highlight'
             columns={cols}
         />
     )
@@ -101,7 +96,7 @@ const mapStateToProps = state => ({
     reactTable: state.reactTable,
     pivot: state.data.pivot,
     renderedColumns: state.data.renderedColumns,
-});
+})
 
 const mapDispatchToProps = {
     updateSorted: updateSorted,
@@ -111,6 +106,6 @@ const mapDispatchToProps = {
     updateResized: updateResized,
     updateFiltered: updateFiltered,
     updateSortedData: updateSortedData,
-};
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(TableComponent)
